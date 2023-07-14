@@ -71,17 +71,20 @@ async def play(ctx, name: str):
         await ctx.send("No entry with that name. !help for a list of commands and how to use them.")
     await vc.disconnect()
 
+
 @bot.command(help="Stops the bot from playing audio")
 async def stop(ctx):
     await ctx.send("Stopping")
     vc = ctx.author.voice.channel
     await vc.disconnect()
 
+
 @bot.command(help="Lists all the soundboard entries")
 async def list(ctx):
     await ctx.send("Here is the list of soundboard entries:")
     for entry in bot.soundboard:
         await ctx.send(entry[0])
+
 
 @bot.command(name="remove", aliases=["delete", "del", "rm"], help="Removes a soundboard entry with the given name")
 async def remove(ctx, name: str):
@@ -92,6 +95,7 @@ async def remove(ctx, name: str):
             return
     await ctx.send("No entry with that name. !help for a list of commands and how to use them.")
 
+
 @bot.command(name="queue", aliases=["q"], help="Shows the queue.")
 async def queue(ctx):
     if len(bot.queue) == 0:
@@ -100,6 +104,7 @@ async def queue(ctx):
     await ctx.send("Here is the queue:")
     for name in bot.queue:
         await ctx.send(name)
+
 
 from decouple import config
 BOT_TOKEN = config('BOT_TOKEN')
