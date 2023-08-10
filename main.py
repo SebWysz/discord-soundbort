@@ -75,7 +75,7 @@ async def play(ctx, name: str):
 @bot.command(help="Stops the bot from playing audio")
 async def stop(ctx):
     await ctx.send("Stopping")
-    vc = ctx.author.voice.channel
+    vc = ctx.voice_client
     await vc.disconnect()
 
 
